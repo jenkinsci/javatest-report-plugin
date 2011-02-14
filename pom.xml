@@ -9,7 +9,7 @@
   
   <artifactId>javatest-report</artifactId>
   <packaging>hpi</packaging>
-  <version>1.4-SNAPSHOT</version>
+  <version>1.4</version>
   <name>Jenkins JavaTest report plugin</name>
   <url>http://wiki.jenkins-ci.org/display/JENKINS/JavaTest+Report+Plugin</url>
   <developers>
@@ -18,4 +18,10 @@
       <name>Rama Pulavarthi</name>
     </developer>
   </developers>
+
+  <scm>
+    <connection>scm:svn:https://svn.jenkins-ci.org/tags/javatest-report-1.4</connection>
+    <developerConnection>scm:svn:https://svn.jenkins-ci.org/tags/javatest-report-1.4</developerConnection>
+    <url>http://fisheye.jenkins-ci.org/browse/Hudson/tags/javatest-report-1.4</url>
+  </scm>
 </project>
