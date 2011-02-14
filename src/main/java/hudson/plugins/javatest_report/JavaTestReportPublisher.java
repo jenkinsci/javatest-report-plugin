@@ -29,7 +29,6 @@ import hudson.remoting.VirtualChannel;
 import hudson.model.Build;
 import hudson.model.BuildListener;
 import hudson.model.Descriptor;
-import hudson.model.Project;
 import hudson.model.Result;
 import hudson.model.Action;
 import hudson.tasks.BuildStepDescriptor;
@@ -44,6 +43,8 @@ import org.kohsuke.stapler.StaplerRequest;
 import java.io.File;
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.Collection;
+import java.util.Collections;
 import net.sf.json.JSONObject;
 
 /**
@@ -72,8 +73,8 @@ public class JavaTestReportPublisher extends Recorder implements Serializable {
         return jtwork;
     }
 
-    public Action getProjectAction(Project project) {
-        return new TestResultProjectAction(project);
+    public Collection<? extends Action> getProjectActions(AbstractProject<?,?> project) {
+        return Collections.singleton(new TestResultProjectAction(project));
     }
     
     /**
