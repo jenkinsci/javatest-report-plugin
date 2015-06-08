@@ -168,8 +168,9 @@ public class JavaTestReportPublisher extends Recorder implements Serializable {
         if (jtwork == null || jtwork.equals("")) {
             listener.getLogger().println("Set JavaTest Work directory for better reporting");
         } else {
-            owner.getWorkspace().child(jtwork).copyRecursiveTo("**/*",
-                new FilePath(owner.getArtifactsDir()).child("java-test-work"));
+            FilePath file = owner.getWorkspace().child(jtwork);
+             //to save inodes and space, it is better to compress
+            file.copyRecursiveTo(new FilePath(owner.getRootDir()).child("java-test-work"));
         }
     }
 

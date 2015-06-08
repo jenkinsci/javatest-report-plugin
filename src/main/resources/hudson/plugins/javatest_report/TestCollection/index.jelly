@@ -63,7 +63,7 @@
               <j:set var="childCount" value="${f.children.size()}"/>
               <tr>
                 <j:if test="${childCount==0}">
-                    <j:set var="foo" value="../../artifact/java-test-work/${f.statusMessage}"/>
+                    <j:set var="foo" value="log/?id=${f.id}"/>
                     <td class="pane"><a href="${foo}">${f.displayName}</a></td>
                 </j:if>
                 <j:if test="${childCount !=0}">
@@ -96,7 +96,7 @@
               <j:if test="${!p.status.toString().equals('SKIP')}">
                 <tr>
                   <j:if test="${childCount==0}">
-                      <j:set var="foo" value="../../artifact/java-test-work/${p.statusMessage}"/>
+                      <j:set var="foo" value="log/?id=${p.id}"/>
                       <td class="pane"><a href="${foo}">${p.displayName}</a></td>
                   </j:if>
                   <j:if test="${childCount !=0}">

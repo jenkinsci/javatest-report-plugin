@@ -1,5 +1,9 @@
 package hudson.plugins.javatest_report;
 
+import hudson.FilePath;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import org.kohsuke.stapler.StaplerRequest;
 import org.kohsuke.stapler.StaplerResponse;
 
@@ -7,6 +11,7 @@ import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
+import javax.servlet.ServletException;
 
 /**
  * {@link TestObject} that is a collection of other {@link TestObject}s.
@@ -146,4 +151,16 @@ public abstract class TestCollection<
     public C getDynamic(String name, StaplerRequest req, StaplerResponse rsp) {
         return get(name);
     }
+    
+     public void doLog(StaplerRequest req, StaplerResponse res) throws IOException, ServletException{
+        String name = req.getParameter("id");
+        // FilePath zipLogFile = new FilePath(getOwner().getRootDir().getAbsolutePath() + "/java-test-work.zip");
+        File logFile = new File(getOwner().getRootDir().getAbsolutePath() + "/java-test-work/" + get(name).getStatusMessage());
+        if(!logFile.exists()){
+            //try the old storage
+            logFile = new File(getOwner().getRootDir().getAbsolutePath() + "/archive/java-test-work/" + get(name).getStatusMessage());
+        }
+        res.serveFile(req, new FileInputStream(logFile), logFile.lastModified(), -1, logFile.length(), "plain.txt");
+     }
+ 
 }
