@@ -32,6 +32,13 @@
         </pluginRepository>
     </pluginRepositories>
     
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-digester3</artifactId>
+            <version>3.2</version>
+        </dependency>
+    </dependencies>
     <scm>
     <connection>scm:git:git://github.com/jenkinsci/javatest-report-plugin</connection>
     <developerConnection>scm:git:git@github.com:jenkinsci/javatest-report-plugin.git</developerConnection>
